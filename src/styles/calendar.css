@@ -1,0 +1,76 @@
+.bloom-calendar {
+  padding: var(--space-5);
+  overflow-x: auto;
+}
+
+.bloom-calendar__header {
+  display: grid;
+  grid-template-columns: 180px repeat(12, 1fr);
+  gap: 2px;
+  margin-bottom: var(--space-2);
+  min-width: 680px;
+}
+
+.bloom-calendar__label-col {
+  min-width: 0;
+}
+
+.bloom-calendar__month-head {
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--color-ink-faint);
+  padding-bottom: 6px;
+  font-weight: 600;
+}
+
+.bloom-calendar__month-head--now {
+  color: var(--color-green-700);
+}
+
+.bloom-calendar__row {
+  display: grid;
+  grid-template-columns: 180px repeat(12, 1fr);
+  gap: 2px;
+  align-items: center;
+  padding: 6px 0;
+  min-width: 680px;
+}
+
+.bloom-calendar__label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--color-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bloom-calendar__track {
+  display: contents;
+}
+
+.bloom-calendar__cell {
+  height: 22px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.bloom-calendar__cell--now {
+  background: rgba(67, 102, 78, 0.08);
+}
+
+.bloom-calendar__bar {
+  position: absolute;
+  inset: 3px 1px;
+  border-radius: 4px;
+  animation: bloom-grow 0.5s ease;
+}
+
+@keyframes bloom-grow {
+  from { transform: scaleX(0.3); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}

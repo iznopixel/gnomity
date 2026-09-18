@@ -1,0 +1,388 @@
+.garden-canvas-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  background: var(--color-bg-sunken);
+}
+
+.garden-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 680;
+  touch-action: none;
+}
+
+.garden-canvas--edit-layout {
+  cursor: default;
+}
+
+.garden-canvas--add-area,
+.garden-canvas--add-plant {
+  cursor: crosshair;
+}
+
+.zone-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--color-ink);
+  paint-order: stroke;
+  stroke: var(--color-bg-raised);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.resize-handle {
+  fill: var(--color-bg-raised);
+  stroke: var(--color-green-700);
+  stroke-width: 1.5px;
+}
+
+.plant-marker {
+  transition: opacity 0.5s ease;
+}
+
+.plant-marker__dot {
+  transition: fill 0.5s ease, fill-opacity 0.5s ease, r 0.3s ease;
+}
+
+.plant-marker__ring {
+  animation: ring-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+.plant-marker__count {
+  font-size: 9px;
+  fill: #fff;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.garden-canvas__empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-6);
+  color: var(--color-ink-soft);
+  background: rgba(246, 241, 231, 0.55);
+  pointer-events: none;
+}
+
+/* ---------- Controls / chips ---------- */
+
+.garden-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.garden-controls__group {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid transparent;
+  background: var(--color-bg-sunken);
+  color: var(--color-ink-soft);
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.chip--outline {
+  border-color: var(--color-border-strong);
+  background: transparent;
+}
+
+.chip--active {
+  background: var(--color-green-700);
+  color: #fdfbf5;
+  border-color: var(--color-green-700);
+}
+
+.chip:hover:not(.chip--active) {
+  background: var(--color-green-100);
+  color: var(--color-green-700);
+}
+
+/* ---------- Month scrubber ---------- */
+
+.month-scrubber {
+  position: relative;
+  display: flex;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 4px;
+  overflow: hidden;
+}
+
+.month-scrubber__month {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 8px 4px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: color 0.25s ease;
+}
+
+.month-scrubber__month--active {
+  color: #fdfbf5;
+}
+
+.month-scrubber__now {
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.month-scrubber__indicator {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  background: var(--color-green-700);
+  border-radius: var(--radius-full);
+  transition: left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+/* ---------- Side panel ---------- */
+
+.side-panel {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  animation: panel-in 0.25s ease;
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.side-panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.side-panel__title {
+  font-size: 21px;
+}
+
+.side-panel__meta {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.side-panel__stat-row {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.side-panel__stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-panel__stat strong {
+  font-size: 20px;
+  font-family: var(--font-display);
+}
+
+.side-panel__stat span {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-faint);
+}
+
+.plant-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--color-border);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.plant-row:first-child {
+  border-top: none;
+}
+
+.plant-row__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(43,38,32,0.25);
+}
+
+.plant-row__name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.plant-row__meta {
+  font-size: 12px;
+  color: var(--color-ink-faint);
+}
+
+/* ---------- Garden page layout ---------- */
+
+.garden-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .garden-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.text-input {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--color-ink-soft);
+}
+
+.add-plant-flow {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  padding: var(--space-5);
+  z-index: 40;
+  animation: panel-in 0.25s ease;
+}
+
+.add-plant-flow__steps {
+  display: flex;
+  gap: 6px;
+  margin-bottom: var(--space-4);
+}
+
+.add-plant-flow__step {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  background: var(--color-bg-sunken);
+  color: var(--color-ink-faint);
+}
+
+.add-plant-flow__step--active {
+  background: var(--color-green-700);
+  color: #fff;
+}
+
+.add-plant-flow__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.add-plant-flow__list {
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.add-plant-flow__option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  background: var(--color-bg-sunken);
+  cursor: pointer;
+  text-align: left;
+}
+
+.add-plant-flow__option:hover {
+  border-color: var(--color-border-strong);
+}
+
+.add-plant-flow__option--active {
+  border-color: var(--color-green-700);
+  background: var(--color-green-100);
+}
+
+.plant-detail__swatch {
+  height: 90px;
+  border-radius: var(--radius-md);
+}
+
+.garden-layout__sidebar {
+  min-height: 200px;
+}
+
+.garden-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-4);
+}
