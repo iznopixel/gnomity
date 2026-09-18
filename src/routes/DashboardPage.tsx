@@ -14,7 +14,7 @@ import { MONTH_LABELS } from '../state/editorStore';
 import { useEditorStore } from '../state/editorStore';
 
 export default function DashboardPage() {
-  const { garden, gardenId, zones, objects, plants, isLoading, isError } = useGardenScene();
+  const { garden, gardenId, zones, objects, plants, isLoading, isError, plantsUnavailable } = useGardenScene();
   const tasksQuery = useTasks(gardenId, { status: 'open' });
   const goToGarden = useGardenNavigation();
   const { activeView, select } = useEditorStore();
@@ -57,6 +57,12 @@ export default function DashboardPage() {
           Open Full Garden
         </Link>
       </div>
+
+      {plantsUnavailable && (
+        <div className="error-banner" style={{ marginBottom: 'var(--space-4)' }}>
+          Plant data is temporarily unavailable from the garden service; showing layout only.
+        </div>
+      )}
 
       <div className="dashboard-layout">
         <div className="dashboard-map panel">

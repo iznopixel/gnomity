@@ -33,7 +33,7 @@ export default function GardenPage() {
     setHovered,
   } = useEditorStore();
 
-  const { garden, gardenId, zones, objects, plants, isLoading, isError } = useGardenScene();
+  const { garden, gardenId, zones, objects, plants, isLoading, isError, plantsUnavailable } = useGardenScene();
 
   const createZone = useCreateZone(gardenId);
   const updateZone = useUpdateZone(gardenId);
@@ -136,6 +136,12 @@ export default function GardenPage() {
         </button>
       </div>
 
+      {plantsUnavailable && (
+        <div className="error-banner" style={{ marginBottom: 'var(--space-4)' }}>
+          Plant placements couldn&rsquo;t be loaded for this garden right now, so the map is showing layout only.
+        </div>
+      )}
+
       <div className="garden-toolbar">
         <GardenViewControls
           activeView={activeView}
@@ -143,7 +149,7 @@ export default function GardenPage() {
           editorMode={editorMode}
           onModeChange={handleModeChange}
         />
-        <div style={{ width: 320, maxWidth: '100%' }}>
+        <div style={{ width: 420, maxWidth: '100%' }}>
           <MonthScrubber month={selectedMonth} onChange={setSelectedMonth} />
         </div>
       </div>
@@ -269,6 +275,13 @@ export default function GardenPage() {
           onCancel={cancelAddPlant}
           saving={placeGardenPlant.isPending}
         />
+      )}
+
+      {placeGardenPlant.isError && (
+        <div className="add-plant-flow__error error-banner">
+          Couldn&rsquo;t save this plant placement — the garden service rejected the request. Your layout changes
+          are unaffected.
+        </div>
       )}
     </div>
   );

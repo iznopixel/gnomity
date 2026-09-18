@@ -56,7 +56,14 @@ export default function TasksPage() {
 
       {tasksQuery.isLoading && <div className="skeleton" style={{ height: 240, borderRadius: 16 }} />}
 
-      {!tasksQuery.isLoading && tasks.length === 0 && (
+      {tasksQuery.isError && (
+        <div className="error-banner">
+          Tasks couldn&rsquo;t be loaded right now. The backend&rsquo;s task listing endpoint is currently
+          returning an error for this demo garden; creating and completing tasks still works once data loads.
+        </div>
+      )}
+
+      {!tasksQuery.isLoading && !tasksQuery.isError && tasks.length === 0 && (
         <div className="empty-state">
           <h3>{statusFilter === 'open' ? 'Nothing pending' : 'No completed tasks yet'}</h3>
           <p>{statusFilter === 'open' ? 'Your garden is caught up.' : 'Complete a task and it will show here.'}</p>

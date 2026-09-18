@@ -16,12 +16,21 @@ export function useActiveGarden() {
     queryFn: async (): Promise<Garden> => {
       const list = await gardensApi.listGardens().catch(() => []);
       if (Array.isArray(list) && list.length > 0) return list[0];
-      const seeded = await gardensApi.seedGarden();
-      const garden = (seeded as any)?.garden ?? (seeded as any);
-      if (garden?.id) return garden as Garden;
-      const listAfter = await gardensApi.listGardens();
+
+      // The demo seed endpoint is unreliable on this backend deployment; fall
+      // back to creating an empty garden the person can build out by hand.
+      try {
+        const seeded = await gardensApi.seedGarden();
+        const garden = (seeded as any)?.garden ?? (seeded as any);
+        if (garden?.id) return garden as Garden;
+      } catch {
+        // fall through to manual creation
+      }
+
+      const listAfter = await gardensApi.listGardens().catch(() => []);
       if (Array.isArray(listAfter) && listAfter.length > 0) return listAfter[0];
-      throw new Error('No garden available');
+
+      return gardensApi.createGarden({ name: 'My Garden' });
     },
     staleTime: Infinity,
   });

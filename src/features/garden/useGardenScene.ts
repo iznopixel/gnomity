@@ -20,10 +20,14 @@ export function useGardenScene() {
     return mergePlantCatalog(gardenPlants, catalog);
   }, [gardenPlantsQuery.data, catalogQuery.data]);
 
-  const isLoading =
-    gardenQuery.isLoading || zonesQuery.isLoading || objectsQuery.isLoading || gardenPlantsQuery.isLoading;
+  const isLoading = gardenQuery.isLoading || zonesQuery.isLoading || objectsQuery.isLoading;
 
-  const isError = gardenQuery.isError || zonesQuery.isError || objectsQuery.isError || gardenPlantsQuery.isError;
+  // Garden/zones/objects are load-bearing for the page shell; garden-plants
+  // and the catalog degrade gracefully (some backend endpoints that join
+  // plant data are currently unreliable — see README/report), so their
+  // failures don't block rendering the rest of the garden.
+  const isError = gardenQuery.isError || zonesQuery.isError || objectsQuery.isError;
+  const plantsUnavailable = gardenPlantsQuery.isError;
 
   return {
     garden: gardenQuery.data,
@@ -34,5 +38,6 @@ export function useGardenScene() {
     catalog: catalogQuery.data ?? [],
     isLoading,
     isError,
+    plantsUnavailable,
   };
 }

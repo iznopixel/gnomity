@@ -22,6 +22,10 @@ export function getGarden(id: number) {
   return api.get<Garden>(`${GARDEN_API}/gardens/${id}`);
 }
 
+export function createGarden(body: Partial<Garden> & { name: string }) {
+  return api.post<Garden>(`${GARDEN_API}/gardens`, body);
+}
+
 export function seedGarden() {
   return api.post<{ garden?: Garden } | Garden>(`${GARDEN_API}/gardens/seed`);
 }

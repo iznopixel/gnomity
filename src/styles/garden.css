@@ -140,16 +140,19 @@
   position: relative;
   z-index: 1;
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: none;
-  padding: 8px 4px;
-  font-size: 11px;
-  letter-spacing: 0.05em;
+  padding: 8px 2px;
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
   font-weight: 600;
   color: var(--color-ink-faint);
   cursor: pointer;
   border-radius: var(--radius-full);
   transition: color 0.25s ease;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .month-scrubber__month--active {
@@ -372,6 +375,14 @@
 .plant-detail__swatch {
   height: 90px;
   border-radius: var(--radius-md);
+}
+
+.add-plant-flow__error {
+  position: fixed;
+  right: var(--space-6);
+  bottom: calc(var(--space-6) + 8px);
+  max-width: 340px;
+  z-index: 41;
 }
 
 .garden-layout__sidebar {
