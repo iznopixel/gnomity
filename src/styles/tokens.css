@@ -1,0 +1,118 @@
+:root {
+  --color-bg: #f6f1e7;
+  --color-bg-raised: #fbf8f1;
+  --color-bg-sunken: #eee6d5;
+  --color-ink: #2b2620;
+  --color-ink-soft: #59524a;
+  --color-ink-faint: #8a8175;
+  --color-border: #ddd2bd;
+  --color-border-strong: #c7b89a;
+
+  --color-green-900: #1f3327;
+  --color-green-700: #33513c;
+  --color-green-600: #43664e;
+  --color-green-500: #587c62;
+  --color-green-300: #9ab6a0;
+  --color-green-100: #dbe7dc;
+
+  --color-clay: #b56a4a;
+  --color-clay-soft: #e7c2ab;
+  --color-gold: #c99a3e;
+  --color-gold-soft: #ecd9ab;
+  --color-plum: #7a5a78;
+  --color-sky: #6f92a3;
+
+  --color-danger: #a5432f;
+  --color-focus: #2f6f4e;
+
+  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(43, 38, 32, 0.08);
+  --shadow-md: 0 6px 20px -4px rgba(43, 38, 32, 0.18);
+  --shadow-lg: 0 20px 48px -12px rgba(43, 38, 32, 0.28);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --nav-width: 84px;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1b1a16;
+    --color-bg-raised: #242219;
+    --color-bg-sunken: #14130f;
+    --color-ink: #f1ece0;
+    --color-ink-soft: #cbc2b2;
+    --color-ink-faint: #948b7c;
+    --color-border: #37342a;
+    --color-border-strong: #4a4636;
+
+    --color-green-900: #dbe7dc;
+    --color-green-700: #a9c7ae;
+    --color-green-600: #8fb397;
+    --color-green-500: #729f7c;
+    --color-green-300: #4d6d55;
+    --color-green-100: #263528;
+
+    --color-clay-soft: #5a3524;
+    --color-gold-soft: #4a3a17;
+
+    color-scheme: dark;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-green-300);
+  color: var(--color-green-900);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
