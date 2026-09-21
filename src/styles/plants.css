@@ -1,0 +1,150 @@
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--space-5);
+}
+
+.plant-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.plant-card__image {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: var(--space-2);
+}
+
+.plant-card__badge {
+  box-shadow: var(--shadow-sm);
+}
+
+.plant-card__body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.plant-card__name {
+  font-family: var(--font-display);
+  font-size: 17px;
+}
+
+.plant-card__sci {
+  font-style: italic;
+  font-size: 13px;
+  color: var(--color-ink-faint);
+}
+
+.plant-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+/* ---------- Plant detail ---------- */
+
+.plant-detail {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 900px) {
+  .plant-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+.plant-detail__hero {
+  height: 300px;
+  border-radius: var(--radius-lg);
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--color-border);
+}
+
+.plant-detail__section {
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.plant-detail__section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-4);
+}
+
+.detail-grid__item strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 16px;
+}
+
+.detail-grid__item span {
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-faint);
+}
+
+.bloom-bar {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  margin-top: var(--space-3);
+}
+
+.bloom-bar__month {
+  height: 22px;
+  border-radius: 4px;
+  background: var(--color-bg-sunken);
+}
+
+.bloom-bar__month--active {
+  background: var(--color-gold);
+}
+
+.bloom-bar__labels {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.bloom-bar__labels span {
+  font-size: 9px;
+  text-align: center;
+  color: var(--color-ink-faint);
+}
+
+.mini-map {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
