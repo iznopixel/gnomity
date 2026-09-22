@@ -1,31 +1,31 @@
 :root {
-  --color-bg: #f6f1e7;
-  --color-bg-raised: #fbf8f1;
-  --color-bg-sunken: #eee6d5;
-  --color-ink: #2b2620;
-  --color-ink-soft: #59524a;
-  --color-ink-faint: #8a8175;
-  --color-border: #ddd2bd;
-  --color-border-strong: #c7b89a;
+  --color-bg: #fff4ed;
+  --color-bg-raised: #fffaf5;
+  --color-bg-sunken: #f3e4d8;
+  --color-ink: #173f31;
+  --color-ink-soft: #4e5f53;
+  --color-ink-faint: #7b8177;
+  --color-border: #d8c9b8;
+  --color-border-strong: #b7aa95;
 
-  --color-green-900: #1f3327;
-  --color-green-700: #33513c;
-  --color-green-600: #43664e;
-  --color-green-500: #587c62;
-  --color-green-300: #9ab6a0;
-  --color-green-100: #dbe7dc;
+  --color-green-900: #174a38;
+  --color-green-700: #4d6f3d;
+  --color-green-600: #617f47;
+  --color-green-500: #849a42;
+  --color-green-300: #c6d66f;
+  --color-green-100: #e9efbd;
 
-  --color-clay: #b56a4a;
-  --color-clay-soft: #e7c2ab;
-  --color-gold: #c99a3e;
-  --color-gold-soft: #ecd9ab;
-  --color-plum: #7a5a78;
-  --color-sky: #6f92a3;
+  --color-clay: #ff4b23;
+  --color-clay-soft: #ffd7c9;
+  --color-gold: #f5b818;
+  --color-gold-soft: #ffe99a;
+  --color-plum: #c30062;
+  --color-sky: #64b6b1;
 
-  --color-danger: #a5432f;
-  --color-focus: #2f6f4e;
+  --color-danger: #aa321e;
+  --color-focus: #174a38;
 
-  --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-display: 'Arial Rounded MT Bold', 'Avenir Next', 'Trebuchet MS', 'Inter', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   --radius-sm: 6px;
@@ -33,9 +33,9 @@
   --radius-lg: 20px;
   --radius-full: 999px;
 
-  --shadow-sm: 0 1px 2px rgba(43, 38, 32, 0.08);
-  --shadow-md: 0 6px 20px -4px rgba(43, 38, 32, 0.18);
-  --shadow-lg: 0 20px 48px -12px rgba(43, 38, 32, 0.28);
+  --shadow-sm: 0 1px 2px rgba(23, 63, 49, 0.08);
+  --shadow-md: 0 8px 24px -8px rgba(23, 63, 49, 0.2);
+  --shadow-lg: 0 20px 48px -12px rgba(23, 63, 49, 0.3);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -46,31 +46,31 @@
   --space-7: 48px;
   --space-8: 64px;
 
-  --nav-width: 84px;
+  --nav-width: 176px;
 
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #1b1a16;
-    --color-bg-raised: #242219;
-    --color-bg-sunken: #14130f;
-    --color-ink: #f1ece0;
-    --color-ink-soft: #cbc2b2;
-    --color-ink-faint: #948b7c;
-    --color-border: #37342a;
-    --color-border-strong: #4a4636;
+    --color-bg: #151c17;
+    --color-bg-raised: #1d251f;
+    --color-bg-sunken: #111712;
+    --color-ink: #fff5e9;
+    --color-ink-soft: #d8d3c7;
+    --color-ink-faint: #9f9c92;
+    --color-border: #364139;
+    --color-border-strong: #4a584e;
 
-    --color-green-900: #dbe7dc;
-    --color-green-700: #a9c7ae;
-    --color-green-600: #8fb397;
-    --color-green-500: #729f7c;
-    --color-green-300: #4d6d55;
-    --color-green-100: #263528;
+    --color-green-900: #e7efbc;
+    --color-green-700: #c6d66f;
+    --color-green-600: #adbf58;
+    --color-green-500: #8ea245;
+    --color-green-300: #53682f;
+    --color-green-100: #27321f;
 
-    --color-clay-soft: #5a3524;
-    --color-gold-soft: #4a3a17;
+    --color-clay-soft: #5a2d23;
+    --color-gold-soft: #564916;
 
     color-scheme: dark;
   }
@@ -94,9 +94,9 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 700;
   margin: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
 }
 
 button {
@@ -113,6 +113,6 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
 }
