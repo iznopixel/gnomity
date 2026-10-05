@@ -47,6 +47,9 @@
   --space-8: 64px;
 
   --nav-width: 176px;
+  --nav-bg: #174a38;
+  --nav-ink: #174a38;
+  --nav-active-bg: #c6d66f;
 
   color-scheme: light;
 }
@@ -71,6 +74,8 @@
 
     --color-clay-soft: #5a2d23;
     --color-gold-soft: #564916;
+
+    --nav-bg: #0e2a20;
 
     color-scheme: dark;
   }
